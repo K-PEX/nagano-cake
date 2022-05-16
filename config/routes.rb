@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
-  
-  namespace :public do
-    get 'homes/about'
-  end
+
+namespace :public do
+  get 'homes/about'
+end
+
+resource :customers, module: 'public', only: [:edit, :update] do
+    get "my_page" => "customers#show"
+    get "unsubscribe"
+    patch "withdraw"
+end
+
+
 # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers,skip: [:passwords], controllers: {
@@ -15,6 +23,6 @@ devise_for :customers,skip: [:passwords], controllers: {
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
-  
+
 
 end

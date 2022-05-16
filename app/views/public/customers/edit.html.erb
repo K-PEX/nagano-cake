@@ -1,0 +1,45 @@
+<h2>登録情報編集</h2>
+<%= form_with(model:@customer, url:customers_path, local: true ,method: :patch) do |f| %>
+
+  <div>
+    <%= f.label :"名前" %>
+    <%= f.label :"(姓)" %>
+    <%= f.text_field :last_name %>
+    <%= f.label :"(名)" %>
+    <%= f.text_field :first_name %>
+  </div>
+  <div>
+    <%= f.label :"フリガナ" %>
+    <%= f.label :"(セイ)" %>
+    <%= f.text_field :last_name_kana %>
+    <%= f.label :"(メイ)" %>
+    <%= f.text_field :first_name_kana %>
+  </div>
+
+  <div>
+    <%= f.label :"メールアドレス" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div>
+    <%= f.label :"郵便番号(ハイフンなし)" %>
+    <%= f.text_field :postal_code %>
+  </div>
+
+  <div>
+    <%= f.label :"住所" %>
+    <%= f.text_field :address %>
+  </div>
+
+  <div>
+    <%= f.label :"電話番号(ハイフンなし)" %>
+    <%= f.text_field :phone_number %>
+  </div>
+
+
+  <div>
+      <%= f.submit "編集内容を保存する" %>
+      <%= link_to '退会する', unsubscribe_customers_path %>
+  </div>
+  </div>
+<% end %>
