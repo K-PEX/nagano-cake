@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+root to: "top#top"
 
+namespace :admin do
+  resources :customers
+end
 
 namespace :public do
   get 'homes/about'

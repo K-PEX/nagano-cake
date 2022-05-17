@@ -12,20 +12,20 @@
       </thead>
 
       <tbody>
-        <%#=@coustomers.each do |customer| %>
+        <%= @customers.each do |customer| %>
          <tr>
-          <th>1<%#= customer.id %></th>
-          <th><%= link_to "namae ", admin_costomers_show_path %></th>
-           <td>email</td>
-          <td><%# if customer.is_enabled == true %>
-              有効
-              <%# else %>
-              退会
-              <%# end %>
-          </td>
-        </tr>
+          <th><%= customer.id %></th>
+          <th>
+            <%= link_to admin_customer_path(customer.id) do %>
+              <%= customer.last_name %><%= customer.first_name %>
+            <% end %>
+          </th>
+          <th><%= customer.email %></th>
+          <th><%= customer.is_customer_status %></th>
+         </tr>
+        <% end %>
       </tbody>
       <%#= paginate @kaminariのinstall %>
     </table>
   </div>
-
+</div>
