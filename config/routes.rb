@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 namespace :public do
   get 'homes/about'
 end
-
+# カスタマーのルート
 resource :customers, module: 'public', only: [:edit, :update] do
     get "my_page" => "customers#show"
     get "unsubscribe"
