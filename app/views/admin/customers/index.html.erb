@@ -21,7 +21,13 @@
             <% end %>
           </th>
           <th><%= customer.email %></th>
-          <th><%= customer.is_customer_status %></th>
+          <th>
+            <% if !customer.is_customer_status %>
+              有効
+            <% else %>
+      　       退会
+            <% end %>
+          </th>
          </tr>
         <% end %>
       </tbody>

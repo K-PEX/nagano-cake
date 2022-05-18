@@ -30,7 +30,13 @@
   </tr>
   <tr>
     <th>会員ステータス</th>
-    <th><%= @customer.is_customer_status %></th>
+    <th>
+      <% if !@customer.is_customer_status %>
+        有効
+      <% else %>
+      　退会
+      <% end %>
+    </th>
   </tr>
 </table>
 <%= link_to "編集", edit_admin_customer_path %>
