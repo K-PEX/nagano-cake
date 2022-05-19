@@ -5,6 +5,7 @@ root to: "top#top"
   namespace :admin do
     resources :items, only: [:index, :new, :create, :show, :edit, :update,]
     resources :customers
+    resources :genres, only: [:index, :create, :edit, :update]
   end
 
 
