@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+root to: "top#top"
 
 #admin_item
   namespace :admin do
     resources :items, only: [:index, :new, :create, :show, :edit, :update,]
+    resources :customers
   end
+
+
 namespace :public do
   get 'homes/about'
 end
