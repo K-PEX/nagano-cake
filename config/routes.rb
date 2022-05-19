@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-
+#admin_item
+  namespace :admin do
+    resources :items, only: [:index, :new, :create, :show, :edit, :update,]
+  end
 namespace :public do
   get 'homes/about'
 end
