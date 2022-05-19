@@ -1,4 +1,4 @@
-<h2>NAGANO-CAKE</h2>
+<h2><%= link_to "NAGANO-CAKE", root_path %></h2>
 <table>
   <tr>
     <% if customer_signed_in? %>
@@ -7,7 +7,7 @@
       <th><%#= link_to "カート", public_homes_about_path %></th>
       <th><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></th>
     <% elsif admin_signed_in? %>
-      <th><%#= link_to "商品一覧", public_homes_about_path %></th>
+      <th><%= link_to "商品一覧", admin_items_path %></th>
       <th><%= link_to "会員一覧", admin_customers_path %></th>
       <th><%#= link_to "注文履歴一覧", public_homes_about_path %></th>
       <th><%#= link_to "ジャンル一覧", public_homes_about_path %></th>
