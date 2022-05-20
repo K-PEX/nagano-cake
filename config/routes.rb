@@ -14,6 +14,7 @@ namespace :public do
   get "item_top" => 'items#top'
   resources :items, only: [:index,:show,:new]
   resources :cart_items
+  resources :delivery, only: [:index, :create, :edit, :update, :destroy]
 end
 # カスタマーのルート
 resource :customers, module: 'public', only: [:edit, :update] do
