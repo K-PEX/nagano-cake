@@ -11,6 +11,9 @@ root to: "top#top"
 
 namespace :public do
   get 'homes/about'
+  get "item_top" => 'items#top'
+  resources :items, only: [:index,:show,:new]
+  resources :cart_items
 end
 # カスタマーのルート
 resource :customers, module: 'public', only: [:edit, :update] do

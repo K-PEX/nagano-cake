@@ -1,0 +1,12 @@
+<h2>商品一覧（全<%= @quantity %>件）</h2><br>
+  <% @items.each do |item| %>
+    <%= link_to public_item_path(item) do%>
+    <% if item.image.attached? %>
+    <%= image_tag item.image, size: "200x200" %>
+    <% else %>
+    <%= image_tag 'no_image', size: "200x200" %>
+  <% end %>
+  <% end %>
+  <p><%= item.name %></p>
+  <p><%= (item.price*1.1).floor.to_s(:delimited, delimiter: ',') %>円</p>
+  <% end %>
