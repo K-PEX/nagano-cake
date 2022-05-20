@@ -1,15 +1,15 @@
-<h3><%= @item.name %></h3><br>
-<% if @item.image.attached? %>
+  <h3><%= @item.name %></h3><br>
+  <% if @item.image.attached? %>
   <%= image_tag @item.image, size: "200x200" %>
-<% else %>
+  <% else %>
   <%= image_tag 'no_image', size: "200x200" %>
-<% end %>
-<p><%= @item.introduction %></p>
-<p><%= (@item.price*1.1).floor.to_s(:delimited, delimiter: ',') %>円</p>  
-			<%= form_with(model: @cart_item, url: public_cart_items_path, method: :post, local: true) do |f| %>
-		      <%= f.label :quantity, "個数選択" %>
-		      <%= f.number_field :quantity, min: 1, max: 100, placeholder: '個数選択', class:"quantity-select-form" %>
-		      <%= f.hidden_field :id, :value => @item.id %>
-		      <%= f.submit "カートに入れる", class: "btn btn-primary" %>
-		    <% end %>
+  <% end %>
+  <p><%= @item.introduction %></p>
+  <p><%= (@item.price*1.1).floor.to_s(:delimited, delimiter: ',') %>円</p>  
+  <%= form_with(model: @cart_item, url: public_cart_items_path, method: :post, local: true) do |f| %>
+  <%= f.label :quantity, "個数選択" %>
+  <%= f.number_field :quantity, min: 1, max: 100, placeholder: '個数選択', class:"quantity-select-form" %>
+  <%= f.hidden_field :id, :value => @item.id %>
+  <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+  <% end %>
   	 
