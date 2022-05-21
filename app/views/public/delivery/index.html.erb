@@ -1,7 +1,8 @@
 <h1>配送先一覧・登録</h1>
 
 <%= form_with model: @delivery, url: public_delivery_index_path do |f| %>
-  <table>
+<table>
+  <thead>
     <tr>
       <th>郵便番号(ハイフンなし)</th>
       <th><%= f.text_field :delivery_postal_code %></th>
@@ -17,16 +18,15 @@
     <tr>
       <th><%= f.submit "新規登録" %></th>
     </tr>
-
+  </thead>
 <% end %>
-  <thead>
+
+  <tbody>
     <tr>
       <th>郵便番号</th>
       <th>住所</th>
       <th>宛名</th>
     </tr>
-  </thead>
-  <tbody>
     <% @deliveries.each do |delivery| %>
       <tr>
         <th><%= delivery.delivery_postal_code %></th>
