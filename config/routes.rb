@@ -13,9 +13,12 @@ namespace :public do
   get 'homes/about'
   get "item_top" => 'items#top'
   resources :items, only: [:index,:show,:new]
-  resources :cart_items
   resources :delivery, only: [:index, :create, :edit, :update, :destroy]
-end
+  resources :cart_items, only: [:index, :create, :update, :destroy] do
+   collection do
+     delete 'all_destroy'
+     end
+   end
 # カスタマーのルート
 resource :customers, module: 'public', only: [:edit, :update] do
     get "my_page" => "customers#show"
