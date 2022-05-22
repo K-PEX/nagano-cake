@@ -16,13 +16,13 @@
         <tr>
           <td><%= order.created_at.to_s(:datetime_jp) %></td>
           <td>
-            <%= order.postcode %><br/>
-            <%= order.city %><br/>
-            <%= order.name %>
+            <%= order.postal_code %><br/>
+            <%= order.delivery.address %><br/>
+            <%= order.delivery.name %>
           </td>
           <td>
             <% order.order_details.each do |order_detail| %>
-              <%= order_detail.product.name %>
+              <%= order_detail.item.name %>
             <% end %>
           </td>
           <td><%= "#{order.total_fee.to_s(:delimited)}" %>円</td>
