@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 2022_05_22_052850) do
     t.string "delivery_postal_code"
     t.string "delivery_address"
     t.string "delivery_name"
+    t.integer "customer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "customer_id", null: false

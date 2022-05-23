@@ -8,7 +8,6 @@ root to: "top#top"
     resources :genres, only: [:index, :create, :edit, :update]
   end
 
-
 namespace :public do
   get 'homes/about'
   get "item_top" => 'items#top'
@@ -16,10 +15,10 @@ namespace :public do
   post 'orders/confirm'
 
   resources :items, only: [:index,:show,:new]
-  resources :delivery, only: [:index, :create, :edit, :update, :destroy]
+  resources :deliveries, only: [:index, :create, :edit, :update, :destroy]
   resources :orders
   resources :cart_items, only: [:index, :create, :update, :destroy] do
-   collection do
+    collection do
      delete 'all_destroy'
    end
   end
