@@ -2,7 +2,7 @@ class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
 
   def index
-    @orders = current_customer.orders.all
+    @orders = current_customer.orders
   end
 
   def new
@@ -13,6 +13,7 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
+    @order.status = 0
     @order.save
     redirect_to public_orders_thanks_path
   end
@@ -20,6 +21,10 @@ class Public::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details.all
+    @order.shipping_cost = 800
+    @order.status = 0
+    @order_details = @order.customer.cart_items.all
+    @total = @order.total_payment - @order.shipping_cost
   end
 
   def confirm

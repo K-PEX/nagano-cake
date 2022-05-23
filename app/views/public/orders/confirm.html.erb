@@ -16,7 +16,13 @@
         <tr>
           <td>
               <%#= attachment_image_tag cart_item.item, :image, fallback: "no_image.jpg", size:"80x50" %>
-              <%= cart_item.item.name %>
+            <% if cart_item.item.image.attached? %>
+              <%= image_tag cart_item.item.image, size: "100x80" %>
+            <% else %>
+              <%= image_tag 'no_image.jpg', alt: "スイーツ", size: "100x80" %>
+            <% end %>
+
+            <%= cart_item.item.name %>
           </td>
           <td>¥<%= (cart_item.item.price * 1.1).floor.to_s(:delimited) %>円</td>
           <td><%= cart_item.amount %></td>
@@ -47,6 +53,7 @@
               <td class="confirm-td">請求金額</td>
               <td>
                 ¥<%= (@total_payment + @order.shipping_cost).to_s(:delimited) %>円
+                 <%= f.hidden_field :total_payment, :value => @total_payment + @order.shipping_cost %>
               </td>
             </tr>
           </tbody>
@@ -60,11 +67,11 @@
 
     <h3>お届け先</h3>
       <%= @postal_code.to_s %></br>
-      <%= f.hidden_field :postal_code, :value => @order.postal_code %>
+      <%= f.hidden_field :postal_code, :value => @postal_code %>
       <%= @address %></br>
-      <%= f.hidden_field :address, :value => @order.address %>
+      <%= f.hidden_field :address, :value => @address %>
       <%= @name %></br>
-      <%= f.hidden_field :name, :value => @order.name %>
+      <%= f.hidden_field :name, :value => @name %>
 
   </div>
     <div class="text-right">
