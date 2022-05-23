@@ -15,6 +15,17 @@ class Public::OrdersController < ApplicationController
     @order.customer_id = current_customer.id
     @order.status = 0
     @order.save
+    current_customer.cart_items.each do |cart_item|
+      @order_detail = OrderDetail.new
+      @order_detail.order_id = @order.id
+      @order_detail.item_id = cart_item.item_id
+      @order_detail.price = cart_item.item.price
+      @order_detail.amount = cart_item.amount
+      @order_detail.making_status = 0
+      @order_detail.save
+    end
+
+    current_customer.cart_items.destroy_all
     redirect_to public_orders_thanks_path
   end
 

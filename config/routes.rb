@@ -6,6 +6,8 @@ root to: "top#top"
     resources :items, only: [:index, :new, :create, :show, :edit, :update,]
     resources :customers
     resources :genres, only: [:index, :create, :edit, :update]
+    resources :orders,only:[:index,:show,:update]
+    resources :order_details, only:[:update]
   end
 
 namespace :public do
