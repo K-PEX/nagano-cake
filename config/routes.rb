@@ -11,14 +11,19 @@ root to: "top#top"
 namespace :public do
   get 'homes/about'
   get "item_top" => 'items#top'
+  get 'orders/thanks' => "orders#thanks"
+  post 'orders/confirm'
+
   resources :items, only: [:index,:show,:new]
   resources :deliveries, only: [:index, :create, :edit, :update, :destroy]
+  resources :orders
   resources :cart_items, only: [:index, :create, :update, :destroy] do
     collection do
      delete 'all_destroy'
-    end
+   end
   end
 end
+
 # カスタマーのルート
 resource :customers, module: 'public', only: [:edit, :update] do
     get "my_page" => "customers#show"
