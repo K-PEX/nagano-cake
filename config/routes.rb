@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-root to: "top#top"
+root to: 'public/items#top'
 
 #admin_item
   namespace :admin do

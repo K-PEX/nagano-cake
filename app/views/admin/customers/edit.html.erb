@@ -31,8 +31,8 @@
     </tr>
     <tr>
       <th>会員ステータス</th>
-      <th><%= f.radio_button:is_customer_status, false %>有効</th>
-      <th><%= f.radio_button:is_customer_status, true %>退会</th>
+      <th><%= f.radio_button:is_deleted, false %>有効</th>
+      <th><%= f.radio_button:is_deleted, true %>退会</th>
     </tr>
   </table>
   <h2><%= f.submit "変更を保存" %></h2>
