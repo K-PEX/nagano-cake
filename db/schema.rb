@@ -85,9 +85,9 @@ ActiveRecord::Schema.define(version: 2022_05_25_045016) do
     t.string "delivery_postal_code"
     t.string "delivery_address"
     t.string "delivery_name"
+    t.integer "customer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "customer_id", null: false
   end
 
   create_table "genres", force: :cascade do |t|
