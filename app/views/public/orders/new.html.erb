@@ -6,7 +6,7 @@
       <%= f.label :payment_method,"クレジットカード"%>
       <br>
       <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-      <%= f.label :payment_method,"銀行振込"%>.   
+      <%= f.label :payment_method,"銀行振込"%>.
     </div>
     <div class="delivery-address-select">
       <h3><%= f.label :delivery, "お届け先" %></h3>
@@ -20,7 +20,7 @@
       <%= f.radio_button :address_select, 1 %>
       登録済住所から選択
       <br>
-      <%#= f.collection_select :delivery, current_customer.deliveries.all, :delivery_address, :id, {prompt: "選択してください"},class: "form-control" %>
+      <%= f.collection_select :delivery_id, current_customer.deliveries.all, :id, :full_address, {prompt: "選択してください"},class: "form-control" %>
       <br>
       <%= f.radio_button :address_select, 2 %>
       <%= f.label :address, "新しいお届け先" %>
