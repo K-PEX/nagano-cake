@@ -1,7 +1,7 @@
 <div class = "container">
   <div class = "row">
-    <div class = "col-md">
-      <div class = "card">
+    <div class = "col">
+      <div class = "card mt-5">
         <div class = "card-body top-card-body">
           <div class = "welcome">
             <h1>
@@ -20,13 +20,13 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class = "row justify-content-center">
+    <h2 class = "mt-4">オススメ商品</h2>
     <table class = "table">
-      <tr>
-        <th class = "text-center"><h2>オススメ商品</h2></th>
-      </tr>
       <tr class = "card-deck">
         <% @items.each do |item| %>
-          <th class = "card-body">
+          <th class = "card-body text-center">
             <%= link_to public_item_path(item) do%>
               <% if item.image.attached? %>
                 <%= image_tag item.image, size: "200x200" %><br>

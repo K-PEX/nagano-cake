@@ -1,8 +1,10 @@
 <div class="container">
-  <div class="row">
-    <h1>注文履歴詳細</h1>
+  <div class="row justify-content-center">
+    <h1 class = "mt-5 my-3">注文履歴詳細</h1>
+  </div>
+  <div class="row justify-content-center">
     <div class="col-xs-8">
-      <b>注文情報</b>
+      <h5><strong>注文情報</strong></h5>
         <table class="table order-show-table">
           <tbody>
             <tr>
@@ -29,7 +31,7 @@
         </table>
     </div>
     <div class="col-xs-3">
-      <b>請求情報</b>
+      <h5><strong>請求情報</strong></h5>
         <table class="table order-show-table">
           <tbody>
             <tr>
@@ -41,7 +43,7 @@
               <td>¥<%= @order.shipping_cost %></td>
             </tr>
             <tr>
-              <td class="active"><b>ご請求額</b></td>
+              <td class="active">ご請求額</td>
               <td>¥<%= @order.total_payment %></td>
             </tr>
           </tbody>
@@ -60,9 +62,10 @@
         </tr>
       </thead>
       <tbody>
-        <% @order_details.each do |order_detail| %>
+        <% @order_detail.each do |order_detail| %>
           <tr>
             <td><%= order_detail.item.name %></td>
+            <td>¥<%= (order_detail.item.price * 1.1).floor.to_s(:delimited) %>円</td>
             <td><%= order_detail.amount %></td>
             <td>¥<%= (order_detail.item.price * order_detail.amount * 1.1).floor.to_s(:delimited) %></td>
           </tr>
