@@ -1,31 +1,39 @@
-<h2>ジャンル一覧・追加</h2>
-<% if @genre.errors.any? %>
-  <%= @genre.errors.count %>件のエラーが発生しました
-  <ul>
+<div class="container">
+  <h2 class="text-center">ジャンル一覧・追加</h2>
+  <div class="row justify-content-center">
+      <%= form_with model: @genre, url: admin_genres_path do |f| %>
+    <% if @genre.errors.any? %>
+    <%= @genre.errors.count %>件のエラーが発生しました
+    <ul>
     <% @genre.errors.full_messages.each do |message| %>
       <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
-  <%= form_with model: @genre, url: admin_genres_path do |f| %>
-    <div>
-        <%= f.label :ジャンル %>
-        <%= f.text_field :name %>
-        <%= f.submit "新規登録" %>
+     <% end %>
+    </ul>
+   <% end %>
+        <div>
+            <%= f.label :ジャンル名 %>
+            <%= f.text_field :name %>
+            <%= f.submit "新規登録",class: "glyphicon glyphicon-pencil btn btn-success pull-right" %>
+        </div>
+      <% end %>
+  </div>
+  <div class="row justify-content-center">
+    <div class="order-table">
+      <table class="table">
+        <thead>
+          <th>ジャンル</th>
+          <th colspan="1"></th>
+        </thead>
+
+        <tbody>
+          <% @genres.each do |genre| %>
+            <tr>
+              <td><%= genre.name %></td>
+              <td><%= link_to "編集する", edit_admin_genre_path(genre.id),class: "glyphicon glyphicon-pencil btn btn-success pull-right" %></td>
+            </tr>
+        　<% end %>
+        </tbody>
+      </table>
     </div>
-  <% end %>
-
-<table>
-  <thead>
-    <th>ジャンル</th>
-  </thead>
-
-  <tbody>
-    <% @genres.each do |genre| %>
-      <tr>
-        <td><%= genre.name %></td>
-        <td><%= link_to "編集する", edit_admin_genre_path(genre.id) %></td>
-      </tr>
-  　<% end %>
-  </tbody>
-</table>
+  </div>
+</div>

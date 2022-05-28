@@ -1,1 +1,14 @@
 @import '~bootstrap/scss/bootstrap';
+.welcome{
+  position: absolute;
+  top: 5%;
+  left: 4%;
+}
+
+.top-card-body {
+  padding-top: 50%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-image: url("../../assets/images/top.png");
+}

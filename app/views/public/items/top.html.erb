@@ -1,20 +1,47 @@
-
-
-<%= image_tag("top.png", class: "top_image") %><br>
-ようこそ、NaganoCakeへ！<br>
-このサイトは、ケーキ販売のECサイトになります。<br>
-会員でない方も商品の閲覧はできますが、<br>
-購入には会員登録が必要になります。
-<h2>オススメ商品</h2>
-<% @items.each do |item| %>
- <%= link_to public_item_path(item) do%>
-  <% if item.image.attached? %>
-   <%= image_tag item.image, size: "200x200" %>
-  <% else %>
-   <%= image_tag 'no_image', size: "200x200" %>
-  <% end %>
-  <p><%= item.name %></p>
-  <p><%= (item.price*1.1).floor.to_s(:delimited, delimiter: ',') %>円</p>
- <% end %>
-<% end %>
-<%= link_to "もっと見る>", public_items_path %>
+<div class = "container">
+  <div class = "row">
+    <div class = "col">
+      <div class = "card mt-5">
+        <div class = "card-body top-card-body">
+          <div class = "welcome">
+            <h1>
+              <strong>
+                ようこそ、NaganoCakeへ！
+              </strong>
+            </h1>
+            <h5>
+              <strong>
+                このサイトは、ケーキ販売のECサイトになります。<br>
+                会員でない方も商品の閲覧はできますが、<br>
+                購入には会員登録が必要になります。
+              </strong>
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class = "row justify-content-center">
+    <h2 class = "mt-4">オススメ商品</h2>
+    <table class = "table">
+      <tr class = "card-deck">
+        <% @items.each do |item| %>
+          <th class = "card-body text-center">
+            <%= link_to public_item_path(item) do%>
+              <% if item.image.attached? %>
+                <%= image_tag item.image, size: "200x200" %><br>
+              <% else %>
+                <%= image_tag 'no_image', size: "200x200" %><br>
+              <% end %>
+              <span><%= item.name %></span><br>
+              <span><%= (item.price*1.1).floor.to_s(:delimited, delimiter: ',') %>円</span>
+            <% end %>
+          </th>
+        <% end %>
+      </tr>
+      <tr>
+        <th class = "text-center"><h2><%= link_to "もっと見る>", public_items_path %></h2></th>
+      </tr>
+    </table>
+  </div>
+</div>

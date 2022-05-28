@@ -1,45 +1,48 @@
-<h2>登録情報編集</h2>
-<%= form_with(model:@customer, url:customers_path, local: true ,method: :patch) do |f| %>
+<div class = "container">
+  <div class = "row justify-content-center">
+    <h1 class = "mt-5">登録情報編集</h1>
+  </div>
+  <div class = "row justify-content-center">
+    <div class = "col-9">
+      <%= form_with(model:@customer, url:customers_path, local: true ,method: :patch) do |f| %></th>
+        <table class = "table">
+          <tr>
+           <th><%= f.label :"名前" %></th>
+           <th>(姓)<%= f.text_field :last_name, class: "col" %><br>(名)<%= f.text_field :first_name, class: "col" %></th>
+          </tr>
+          <tr>
+           <th><%= f.label :"フリガナ" %></th>
+           <th>(セイ)<%= f.text_field :last_name_kana, class: "col" %><br>(メイ)<%= f.text_field :first_name_kana, class: "col" %></th>
+          </tr>
 
-  <div>
-    <%= f.label :"名前" %>
-    <%= f.label :"(姓)" %>
-    <%= f.text_field :last_name %>
-    <%= f.label :"(名)" %>
-    <%= f.text_field :first_name %>
-  </div>
-  <div>
-    <%= f.label :"フリガナ" %>
-    <%= f.label :"(セイ)" %>
-    <%= f.text_field :last_name_kana %>
-    <%= f.label :"(メイ)" %>
-    <%= f.text_field :first_name_kana %>
-  </div>
+          <tr>
+           <th><%= f.label :"メールアドレス" %></th>
+           <th><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col" %></th>
+          </tr>
 
-  <div>
-    <%= f.label :"メールアドレス" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+          <tr>
+           <th><%= f.label :"郵便番号(ハイフンなし)" %></th>
+           <th><%= f.text_field :postal_code, class: "col" %></th>
+          </tr>
 
-  <div>
-    <%= f.label :"郵便番号(ハイフンなし)" %>
-    <%= f.text_field :postal_code %>
-  </div>
+          <tr>
+           <th><%= f.label :"住所" %></th>
+           <th><%= f.text_field :address, class: "col" %></th>
+          </tr>
 
-  <div>
-    <%= f.label :"住所" %>
-    <%= f.text_field :address %>
-  </div>
+          <tr>
+           <th><%= f.label :"電話番号(ハイフンなし)" %></th>
+           <th><%= f.text_field :phone_number, class: "col" %></th>
+          </tr>
 
-  <div>
-    <%= f.label :"電話番号(ハイフンなし)" %>
-    <%= f.text_field :phone_number %>
+        </table>
+        <div class = "row justify-content-center">
+           <p class = "mt-3"><%= f.submit "編集内容を保存する" %></p>
+        </div>
+        <div class = "row justify-content-end mb-5">
+           <%= link_to '退会する', unsubscribe_customers_path, class: "btn btn-danger btn-sm" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-
-  <div>
-      <%= f.submit "編集内容を保存する" %>
-      <%= link_to '退会する', unsubscribe_customers_path %>
-  </div>
-  </div>
-<% end %>
+</div>

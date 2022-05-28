@@ -1,40 +1,49 @@
-<h1>配送先一覧・登録</h1>
+<div class = "container">
+  <div class = "row justify-content-center">
+    <h1>配送先一覧・登録</h1>
+  </div>
+  <div>
+    <div class = "row justify-content-center">
+      <div class = "col-7">
+          <%= form_with model: @delivery, url: public_deliveries_path do |f| %>
+            <table class = "table">
+              <tr>
+                <th>郵便番号(ハイフンなし)</th>
+                <th><%= f.text_field :delivery_postal_code, class: "col" %></th>
+              </tr>
+              <tr>
+                <th>住所</th>
+                <th><%= f.text_field :delivery_address, class: "col" %></th>
+              </tr>
+              <tr>
+                <th>宛名</th>
+                <th><%= f.text_field :delivery_name, class: "col" %></th>
+              </tr>
+            </table>
+            <div class = "text-center mb-5"><%= f.submit "新規登録" %></div>
+          <% end %>
+      </div>
+    </div>
+  </div>
 
-<%= form_with model: @delivery, url: public_deliveries_path do |f| %>
-<table>
-  <thead>
-    <tr>
-      <th>郵便番号(ハイフンなし)</th>
-      <th><%= f.text_field :delivery_postal_code %></th>
-    </tr>
-    <tr>
-      <th>住所</th>
-      <th><%= f.text_field :delivery_address %></th>
-    </tr>
-    <tr>
-      <th>宛名</th>
-      <th><%= f.text_field :delivery_name %></th>
-    </tr>
-    <tr>
-      <th><%= f.submit "新規登録" %></th>
-    </tr>
-  </thead>
-<% end %>
-
-  <tbody>
-    <tr>
-      <th>郵便番号</th>
-      <th>住所</th>
-      <th>宛名</th>
-    </tr>
-    <% @deliveries.each do |delivery| %>
-      <tr>
-        <th><%= delivery.delivery_postal_code %></th>
-        <th><%= delivery.delivery_address %></th>
-        <th><%= delivery.delivery_name %></th>
-        <th><%= link_to "編集", edit_public_delivery_path(delivery.id) %></th>
-        <th><%= link_to "削除", public_delivery_path(delivery.id), method: :delete %></th>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class = "row justify-content-center">
+      <table class = "table">
+        <tbody>
+          <tr>
+            <th>郵便番号</th>
+            <th>住所</th>
+            <th>宛名</th>
+          </tr>
+          <% @deliveries.each do |delivery| %>
+            <tr>
+              <th><%= delivery.delivery_postal_code %></th>
+              <th><%= delivery.delivery_address %></th>
+              <th><%= delivery.delivery_name %></th>
+              <th><%= link_to "編集", edit_public_delivery_path(delivery.id) %></th>
+              <th><%= link_to "削除", public_delivery_path(delivery.id), method: :delete %></th>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+  </div>
+</div>

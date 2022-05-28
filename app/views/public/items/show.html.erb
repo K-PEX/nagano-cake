@@ -1,15 +1,29 @@
-  <h3><%= @item.name %></h3><br>
-  <% if @item.image.attached? %>
-  <%= image_tag @item.image, size: "200x200" %>
-  <% else %>
-  <%= image_tag 'no_image', size: "200x200" %>
-  <% end %>
-  <p><%= @item.introduction %></p>
-  <p><%= (@item.price*1.1).floor.to_s(:delimited, delimiter: ',') %>円</p>  
-  <%= form_with(model: @cart_item, url: public_cart_items_path, method: :post, local: true) do |f| %>
-        <%= f.hidden_field :item_id, value: @item.id %>
-        <%= f.label :amount, "個数:", class: "d-inline-block" %>
-        <%= f.select :amount, *[1..10], include_blank: "個数選択" %>
-        <%= f.submit "カートに入れる", class: "btn btn-success" %>
-      <% end %>
-  	 
+  <div class = "container">
+    <div class = "row justify-content-center mt-5">
+      <h1>商品詳細</h1>
+    </div>
+    <div class = "row mt-4">
+      <div class = "col-5 text-right">
+        <% if @item.image.attached? %>
+          <%= image_tag @item.image, size: "300x300" %>
+        <% else %>
+          <%= image_tag 'no_image', size: "300x300" %>
+        <% end %>
+      </div>
+      <div class = "col-7">
+        <h1 class = "title ml-4"><%= @item.name %></h1>
+        <p class = "body ml-5"><%= @item.introduction %></p><br>
+        <div class = "text-right">
+          <p><h3 class = "mr-3">￥<%= (@item.price*1.1).floor.to_s(:delimited, delimiter: ',') %>円</h3></p>
+            <%= form_with(model: @cart_item, url: public_cart_items_path, method: :post, local: true) do |f| %>
+              <%= f.hidden_field :item_id, value: @item.id %>
+              <p class = "mr-4"><%= f.select :amount, *[1..10], include_blank: "個数選択" %></p>
+              <%= f.submit "カートに入れる", class: "btn btn-success" %>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
