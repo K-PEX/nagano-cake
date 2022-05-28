@@ -1,5 +1,5 @@
 <div class="container">
-  <h3>注文履歴一覧</h3>
+  <h1 class = "text-center mt-5 my-3">注文履歴一覧</h1>
   <table class="order-table table">
     <thead>
       <tr>
@@ -16,13 +16,13 @@
         <tr>
           <td><%= order.created_at.to_s(:datetime_jp) %></td>
           <td>
-            <%= order.postal_code %><br/>
+            〒<%= order.postal_code %>
             <%= order.address %><br/>
             <%= order.name %>
           </td>
           <td>
             <% order.order_details.each do |order_detail| %>
-              <%= order_detail.item.name %>
+              <%= order_detail.item.name %><br>
             <% end %>
           </td>
           <td><%= order.total_payment %>円</td>
