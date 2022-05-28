@@ -1,30 +1,35 @@
-<h2>商品編集</h2>
-<%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
-   <%= f.label :"商品画像" %>
-   <%= f.file_field :image, accept: "image/*" %>
+<div class="container">
+  <h2 class="text-center">商品編集</h2>
+  <div class="row justify-content-center">
+    <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
+    <table>
+      <tr>
+        <th><%= f.label :"商品画像" %></th>
+        <th><%= f.file_field :image, accept: "image/*" %></th>
+      </tr>
+      <tr>
+      　<th><%= f.label :"商品名" %></th>
+        <th><%= f.text_field :name %></th>
+      </tr>
+      <tr>
+        <th><%= f.label :"商品説明" %></th>
+        <th><%= f.text_area :introduction %></th>
+      </tr>
+      <tr>
+        <th><%= f.label :"ジャンル" %></th>
+        <th><%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "-- 選択してください --") %></th>
+      </tr>
+      <tr>
+        <th><%= f.label :"税抜価格" %></th>
+        <th><%= f.text_field :price %>円</th>
+      </tr>
+      <tr>
+        <th><%= f.label :"販売ステータス" %></th>
+        <th><%= f.radio_button :is_active, false %><%= f.label :is_active, "販売中" %></th>
+        <th><%= f.radio_button :is_active, true %><%= f.label :is_active, "販売停止中" %></th>
+      </tr>
+    </table>
+        <%= f.submit "変更を保存", class: "glyphicon glyphicon-pencil btn btn-success pull-right" %>
+    <% end %>
   </div>
-　<div>
-　  <%= f.label :"商品名" %>
-    <%= f.text_field :name %>
-  </div>
-  <div>
-    <%= f.label :"商品説明" %>
-    <%= f.text_area :introduction %>
-  </div>
-  <div>
-    <%= f.label :"ジャンル" %>
-    <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "-- 選択してください --") %>
-  </div>
-  <div>
-    <%= f.label :"税抜価格" %>
-    <%= f.text_field :price %>円
-  </div>
-  <div>
-    <%= f.label :"販売ステータス" %>
-    <%= f.radio_button :is_active, false %>
-  	<%= f.label :is_active, "販売中" %>
-    <%= f.radio_button :is_active, true %>
-    <%= f.label :is_active, "販売停止中" %>
-  </div>
-    <%= f.submit "変更を保存" %>
-<% end %>
+</div>
