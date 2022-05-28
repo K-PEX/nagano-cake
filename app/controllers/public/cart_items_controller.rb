@@ -31,8 +31,8 @@ class Public::CartItemsController < ApplicationController
     else
       cart_item = current_customer.cart_items.new(cart_item_params)
       cart_item.save
-    else
-    redirect_to public_cart_items_path, notice: "商品をカートに追加しました。"
+      redirect_to public_cart_items_path, notice: "商品をカートに追加しました。"
+    end  
   end
 
   private
